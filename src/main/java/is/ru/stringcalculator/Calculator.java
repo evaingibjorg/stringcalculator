@@ -33,14 +33,17 @@ public class Calculator {
 		return total;
     }
 
-    private static String[] differentDelimiter(String numbers){
+	private static String[] differentDelimiter(String numbers){
 
     	String newDelimiter = numbers.substring(2,3);
-    	numbers = numbers.replaceAll("\n","").(newDelimiter,",");
+    	numbers = numbers.replaceAll("\n","");
     	numbers = numbers.substring(3); 
+    	numbers = numbers.replaceAll(newDelimiter,",");
 
     	return numbers.split(",");
     }
+
+    
 
 
 }
