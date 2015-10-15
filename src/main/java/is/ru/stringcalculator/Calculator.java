@@ -6,6 +6,10 @@ public class Calculator {
 		if(text.equals("")){
 			return 0;
 		}
+		else if (text.contains("//")) {
+			return sum(differentDelimiter(text));
+			
+		}
 		else if(text.contains(",") || (text.contains("\n"))){
 			return sum(splitNumbers(text));
 		}
@@ -29,6 +33,14 @@ public class Calculator {
 		return total;
     }
 
+    private static String[] differentDelimiter(String numbers){
+
+    	String newDelimiter = numbers.substring(2,3);
+    	numbers = numbers.replaceAll("\n","").(newDelimiter,",");
+    	numbers = numbers.substring(3); 
+
+    	return numbers.split(",");
+    }
 
 
 }
