@@ -46,15 +46,21 @@ public class Calculator {
 		
 		if(countDelimiters > 1)
 		{
+
 			numbers = numbers.replaceAll("\n","");
+
+			int frontOfDelimiter;
+			int endOfDelimiter;
+			String newDelimiter;
+
 			for(int i = 0; i < countDelimiters; i++)
 			{
-			int frontOfDelimiter = numbers.indexOf("[");
-			int endOfDelimiter = numbers.indexOf("]");
-			String newDelimiter = numbers.substring(frontOfDelimiter + 1,endOfDelimiter);
+			frontOfDelimiter = numbers.indexOf("[");
+			endOfDelimiter = numbers.indexOf("]");
+			newDelimiter = numbers.substring(frontOfDelimiter + 1,endOfDelimiter);
 
-	    	numbers = numbers.replace(newDelimiter,",");
 	    	numbers = numbers.substring(endOfDelimiter + 1);
+	    	numbers = numbers.replace(newDelimiter,",");
 
 	    	}
     	}
@@ -62,12 +68,14 @@ public class Calculator {
 		else if(numbers.contains ("[") && numbers.contains("]")){
     	int endOfDelimiter = numbers.indexOf("]");
     	String newDelimiter = numbers.substring(3,endOfDelimiter);
+
     	numbers = numbers.replace(newDelimiter,",");
     	numbers = numbers.substring(endOfDelimiter);
     	}
 
     	else{
 		String newDelimiter = numbers.substring(2,3);
+
     	numbers = numbers.replaceAll("\n","");
     	numbers = numbers.substring(3); 
     	numbers = numbers.replaceAll(newDelimiter,",");
