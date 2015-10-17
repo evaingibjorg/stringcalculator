@@ -6,6 +6,9 @@ public class Calculator {
 		if(text.equals("")){
 			return 0;
 		}
+		else if(text.contains("-")){
+		return noNegativeNumbers(splitNumbers(text));
+		}
 		else if (text.contains("//")) {
 			return sum(differentDelimiter(text));
 			
@@ -34,8 +37,7 @@ public class Calculator {
     }
 
 	private static String[] differentDelimiter(String numbers){
-
-    	String newDelimiter = numbers.substring(2,3);
+		String newDelimiter = numbers.substring(2,3);
     	numbers = numbers.replaceAll("\n","");
     	numbers = numbers.substring(3); 
     	numbers = numbers.replaceAll(newDelimiter,",");
@@ -43,7 +45,19 @@ public class Calculator {
     	return numbers.split(",");
     }
 
-    
+    private static int noNegativeNumbers(String[] numbers){
+    	String storeNegativeNumbers = "";
+
+	    for (String number : numbers) {
+	            if (toInt(number)< 0) {
+	                storeNegativeNumbers += number;
+	                storeNegativeNumbers += (", ");
+	            }
+	    }
+
+	    throw new IllegalArgumentException("Negatives not allowed: " + storeNegativeNumbers);
+
+    }
 
 
 }
