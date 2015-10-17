@@ -41,10 +41,21 @@ public class Calculator {
     }
 
 	private static String[] differentDelimiter(String numbers){
+		
+		if(numbers.contains ("[") && numbers.contains("]")){
+    	int endOfDelimiter = numbers.indexOf("]");
+    	String storeDelimiter = numbers.substring(3,endOfDelimiter);
+    	numbers = numbers.replace(storeDelimiter,",");
+    	numbers = numbers.substring(endOfDelimiter);
+    	}
+
+    	else{
 		String newDelimiter = numbers.substring(2,3);
     	numbers = numbers.replaceAll("\n","");
     	numbers = numbers.substring(3); 
     	numbers = numbers.replaceAll(newDelimiter,",");
+    	}
+
 
     	return numbers.split(",");
     }
