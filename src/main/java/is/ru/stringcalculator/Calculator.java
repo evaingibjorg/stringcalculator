@@ -32,7 +32,7 @@ public class Calculator {
  	    int total = 0;
  
         for(String number : numbers){
-		    if(toInt(number) < 1000)
+		    if(toInt(number) <= 1000)
 		{
 		    total += toInt(number);
 		}
