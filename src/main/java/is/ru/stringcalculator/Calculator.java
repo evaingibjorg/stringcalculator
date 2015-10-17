@@ -41,11 +41,28 @@ public class Calculator {
     }
 
 	private static String[] differentDelimiter(String numbers){
+		int countDelimiters = 0;
+		countDelimiters = numbers.split("]").length - 1;
 		
-		if(numbers.contains ("[") && numbers.contains("]")){
+		if(countDelimiters > 1)
+		{
+			numbers = numbers.replaceAll("\n","");
+			for(int i = 0; i < countDelimiters; i++)
+			{
+			int frontOfDelimiter = numbers.indexOf("[");
+			int endOfDelimiter = numbers.indexOf("]");
+			String newDelimiter = numbers.substring(frontOfDelimiter + 1,endOfDelimiter);
+
+	    	numbers = numbers.replace(newDelimiter,",");
+	    	numbers = numbers.substring(endOfDelimiter + 1);
+
+	    	}
+    	}
+
+		else if(numbers.contains ("[") && numbers.contains("]")){
     	int endOfDelimiter = numbers.indexOf("]");
-    	String storeDelimiter = numbers.substring(3,endOfDelimiter);
-    	numbers = numbers.replace(storeDelimiter,",");
+    	String newDelimiter = numbers.substring(3,endOfDelimiter);
+    	numbers = numbers.replace(newDelimiter,",");
     	numbers = numbers.substring(endOfDelimiter);
     	}
 
@@ -55,7 +72,6 @@ public class Calculator {
     	numbers = numbers.substring(3); 
     	numbers = numbers.replaceAll(newDelimiter,",");
     	}
-
 
     	return numbers.split(",");
     }
